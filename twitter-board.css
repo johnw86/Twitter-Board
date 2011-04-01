@@ -1,0 +1,45 @@
+﻿/* Basic twitter board styling */
+
+#twitter-board, #twitter-board li
+{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+#twitter-board li
+{
+    width: 200px;
+    float: left;
+    display: inline;
+    border: solid 1px #CCC;
+    padding: 10px;
+    margin-right: 10px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; 
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#twitter-board li img
+{
+    margin-right: 5px;
+    margin-bottom: 3px;
+    float: left;
+}
+
+#twitter-board abbr
+{
+    text-decoration:none;  
+    border: none;
+    font-size: 0.8em; 
+    display: block;
+    position: absolute;
+    bottom: 10px;
+}
+
+#twitter-board a.user
+{
+    display: block;
+    font-size: 1.2em;
+}
