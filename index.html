@@ -11,9 +11,9 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var query = '#lfc' //search query
-            var res = 50; //number of tweets to retrieve
-
+            var res = 12; //number of tweets to retrieve
             $.twitterboard(query, res);
+            window.setInterval(function() { $.twitterboard(query, res, 'update'); }, 60000);
         });
     </script>
     
@@ -21,9 +21,9 @@
 </head>
 <body>
 
-    <ul id="twitter-board">
-    
-    </ul>
+  <ul id="twitter-board">
+    <li>Javascript required</li>
+  </ul>
     
 </body>
 </html>
