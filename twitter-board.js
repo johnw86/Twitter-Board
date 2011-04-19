@@ -8,13 +8,14 @@
         // encode the hash if the search contains a hash tag
         var query = q.replace("#", "%23");
 
+        // if not doing a update clear all children of ul
         if (r != "update") {
             $('#twitter-board *').remove();
         }
 
         var tweetsAdded = 0;
 
-        //Get the twitter feed based on query and no results requested - create an li containing tweet and append to ul
+        // get the twitter feed based on query and no results requested - create an li containing tweet and append to ul
         $.getJSON('http://search.twitter.com/search.json?callback=?&q=' + query + '&rpp=' + n, function(data) {
             $.each(data.results, function(i, item) {
                 var tweet = '<li id="' + item.id_str + '">';
@@ -24,12 +25,12 @@
                 tweet += '<abbr class="timeago" title=\'' + $.ISODateString(new Date(item.created_at)) + '\'>' + new Date(item.created_at) + '</abbr>';
                 tweet += '</li>';
 
-                //Check to see whether the request is an update or initial load
-                //If its not an update append but if its update prepend and remove last item.
+                // check to see whether the request is an update or initial load
+                // if it's not an update append but if its update prepend and remove last item.
                 if (r != "update") {
                     $('#twitter-board').append(tweet);
                 }
-                else if (!$('#twitter-board li#' + item.id_str).exists()) {
+                else if (!$('li#' + item.id_str).exists()) {
                     $('#twitter-board li').last().fadeOut("slow").remove();
                     $(tweet).hide().prependTo("#twitter-board").fadeIn("slow");
                     tweetsAdded++;
@@ -40,7 +41,7 @@
 
             }
 
-            //test to see if IE then if greater than version 6 run timeago
+            // test to see if IE then if greater than version 6 run timeago
             if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
                 var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
                 if (ieversion > 6)
@@ -81,12 +82,11 @@
                 if (tallest < $(this).height()) { tallest = $(this).height(); }
             });
             $(this).children().css({ 'height': tallest + pad + 'px' });
-            //$(this).children().height(tallest);
         });
         return this;
     };
 
-    /* Updates tweet text to make hashtags, user and url links */
+    /* updates tweet text to make hashtags, user and url links */
     $.Linkify = function Linkify(text) {
         text = text.replace(/(https?:\/\/\S+)/gi, function(s) {
             return '<a href="' + s + '" target="_blank">' + s + '</a>';
@@ -103,7 +103,7 @@
     };
 
 
-    /* Call this function on every onkeyup event . */
+    /* call this function on every onkeyup event . */
     $.charactorCount = function twitter_type_count(input_selector, max_chars, update_container_selector) {
         var text = $(input_selector).val() + "";
         var curr_num_chars = text.length;

@@ -10,10 +10,10 @@
     
     <script type="text/javascript">
         $(document).ready(function() {
-            var query = '#lfc' //search query
+            var query = '#tech' //search query
             var res = 12; //number of tweets to retrieve
-            $.twitterboard(query, res);
-            window.setInterval(function() { $.twitterboard(query, res, 'update'); }, 60000);
+            $.twitterboard(query, res); // call twitter board
+            window.setInterval(function() { $.twitterboard(query, res, 'update'); }, 60000); // call for updated tweets every minute
         });
     </script>
     
